@@ -8,11 +8,11 @@ export const AppLoginRoutes: Routes = [
     path: '',
     children: [
     {
-      path: 'login',
+      path: 'loginx',
       component: LoginComponent,
       data: {
         title: 'Cadastro de Paciente',
-        urls: [{title: 'Paciente',url: '/login'},{title: 'Cadastro'}]
+        urls: [{title: 'Paciente',url: '/dashboard'},{title: 'Cadastro'}]
       }
     },
     {
@@ -20,7 +20,7 @@ export const AppLoginRoutes: Routes = [
         component: RegistroComponent,
         data: {
           title: 'Manutenção de Cadastro',
-          urls: [{title: 'Paciente',url: '/registro'},{title: 'Manutenção'}]
+          urls: [{title: 'Paciente',url: '/dashboard'},{title: 'Manutenção'}]
         }
       }
     ]
