@@ -8,6 +8,7 @@ import * as firebase from "firebase";
 export class FirebaseService {
 
   firebaseui:string;
+  firebaseKey:string;
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",
@@ -24,16 +25,19 @@ export class FirebaseService {
      firebase.auth().onAuthStateChanged(x => this.authObservable(x));
      
   }
-
+  
   authObservable(user:any):void{
     if (user) {
-      this.firebaseui = user.uid;
-      localStorage.setItem('googleAdmob',this.firebaseui);
+      this.firebaseui = '_true';
+      this.firebaseKey = user.uid;
+      localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_true');
+      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg',user.iud);
     } else {
-      localStorage.removeItem('googleAdmob');
-      
+      localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_false');
+      localStorage.removeItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg');
+      this.firebaseui = '_false';
       this.router.navigate(['/authentication/login']);
-   }
+  }
   }
 
   loginEmail(email:string, password:string){  
@@ -46,8 +50,10 @@ export class FirebaseService {
   loginSucesso(){
     var user = firebase.auth().currentUser;
     if (user) {
-      this.firebaseui = user.uid;
-      localStorage.setItem('googleAdmob',user.uid);
+      this.firebaseui = '_true';
+      this.firebaseKey = user.uid;
+      localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_true');
+      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg', user.uid);
       this.router.navigate(['/dashboard/dashboard1']);
       return true;
     } else {
@@ -71,7 +77,8 @@ export class FirebaseService {
 
   logout():void{
     firebase.auth().signOut().then(function() {
-      // Sign-out successful.
+      this.firebaseui = '_false';
+      localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_false');
     }).catch(function(error) {
       // An error happened.
     });

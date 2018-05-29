@@ -13,11 +13,13 @@ export class AuthguardGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    state: RouterStateSnapshot): boolean {
 
-      if(localStorage.getItem('googleAdmob')==this.fire.firebaseui){
+      if('_true'==this.fire.firebaseui){
+            console.log('autorizou a rota');
             return true;
         }else{
+          console.log('nao autorizou a rota');
           this.router.navigate(['/authentication/login'])
           return false;
         }
