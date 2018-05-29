@@ -11,7 +11,6 @@ export class Dashboard1Component implements AfterViewInit {
 	subtitle:string;	
 	constructor(private fire : FirebaseService) {
         this.subtitle = "This is some text within a card block."
-        this.fire.validaAuth();
     }
     
     ngOnInit() {

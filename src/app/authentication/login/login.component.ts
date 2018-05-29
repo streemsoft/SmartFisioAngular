@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit{
 
     botaoEntrar():void{
         if(this.email != null && this.senha != null && this.email != '' && this.senha !=''){
-            this.fire.loginEmail(this.email,this.senha).then(x=> console.log(x));
+            this.fire.loginEmail(this.email,this.senha).then(x =>console.log(x));
             
         }else{
             console.log('sem dados');

@@ -1,3 +1,4 @@
+import { routes } from './app-routing.module';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import * as firebase from "firebase";
@@ -6,7 +7,7 @@ import * as firebase from "firebase";
 @Injectable()
 export class FirebaseService {
 
-  public firebaseui:string;
+  firebaseui:string;
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",
@@ -20,50 +21,40 @@ export class FirebaseService {
   constructor( private router : Router) { 
      firebase.initializeApp(this.config);
       
-     firebase.auth().onAuthStateChanged(x => this.imp(x));
+     firebase.auth().onAuthStateChanged(x => this.authObservable(x));
      
   }
 
-  imp(c:any){
-    if (c) {
-      console.log('logado');
+  authObservable(user:any):void{
+    if (user) {
+      this.firebaseui = user.uid;
+      localStorage.setItem('googleAdmob',this.firebaseui);
     } else {
-      localStorage.removeItem('isLoggedin');
-      console.log('nao logado');
-      //this.router.navigate(['./pacientes/cadastro']);
+      localStorage.removeItem('googleAdmob');
+      
+      this.router.navigate(['/authentication/login']);
    }
   }
 
-  setUi(ui:string):void{
-    this.firebaseui = ui;
+  loginEmail(email:string, password:string){  
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+          .then(user => this.loginSucesso()).catch(function(error) {
+                  return false;
+               });
   }
 
-  validaAuth():void{
- 
-    if (localStorage.getItem('isLoggedin')=='t10') {
-      console.log('login deu certo, permiti ficar na pagina');
+  loginSucesso(){
+    var user = firebase.auth().currentUser;
+    if (user) {
+      this.firebaseui = user.uid;
+      localStorage.setItem('googleAdmob',user.uid);
+      this.router.navigate(['/dashboard/dashboard1']);
+      return true;
     } else {
-      this.router.navigate(['/authentication/login']);
+      return false;
     }
   }
-
-  loginEmail(email:string, password:string){
-    
-
-    
-    return firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-        var user = firebase.auth().currentUser;
-        if (user) {
-          localStorage.setItem('googleAdmob',user.uid);
-          localStorage.setItem('googleLocation','_true');
-          return 'entrou';
-        } else {
-          return 'nao';
-        }
-        }).catch(function(error) {
-         
-        });
-  }
+  
 
   redefinirSenha(email:string):void{
     var auth = firebase.auth();
