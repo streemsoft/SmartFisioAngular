@@ -31,7 +31,8 @@ export class FirebaseService {
       this.firebaseui = '_true';
       this.firebaseKey = user.uid;
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_true');
-      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg',user.iud);
+      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg', user.uid+'');
+      console.log(user.uid);
     } else {
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_false');
       localStorage.removeItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg');
@@ -53,8 +54,13 @@ export class FirebaseService {
       this.firebaseui = '_true';
       this.firebaseKey = user.uid;
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_true');
-      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg', user.uid);
+      localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg', user.uid+'');
+      localStorage.setItem('YusgfdloS8TKvhghdsg1-9f6sdgsdf_Sa_Rg', user.uid+'a1');
+      localStorage.setItem('df4wfqQFdfsTssfsdgA','YusgfdloS8TKvhghg1');
+      localStorage.setItem('YusgfdloS8TKvhghg1','dsfo4dfTE34sfgOdffg');
+      localStorage.setItem('YusgfdloS869s4Qxx5TKvhghg1','dsfo4dfTE34sfgOdffg');
       this.router.navigate(['/dashboard/dashboard1']);
+      console.log(user.uid);
       return true;
     } else {
       return false;
@@ -79,6 +85,7 @@ export class FirebaseService {
     firebase.auth().signOut().then(function() {
       this.firebaseui = '_false';
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_false');
+      localStorage.removeItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg');
     }).catch(function(error) {
       // An error happened.
     });
