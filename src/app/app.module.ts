@@ -1,9 +1,10 @@
+import { AuthguardGuard } from './authguard.guard';
 import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,NgModel } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,6 +22,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
+import { FirebaseService } from './firebase.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -55,7 +57,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     },{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  }, FirebaseService, AuthguardGuard],
   bootstrap: [AppComponent]
 })
 

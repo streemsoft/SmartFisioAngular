@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { FirebaseService } from './../../firebase.service';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,24 +7,29 @@ import { Router } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit{
 
-    constructor(public router: Router) {}
+   email:string;
+   senha:string;
+
+    constructor(private fire: FirebaseService) {}
 
     ngOnInit() {}
 
-    ngAfterViewInit() {
-        $(function() {
-            $(".preloader").fadeOut();
-        });
-        $(function() {
-            (<any>$('[data-toggle="tooltip"]')).tooltip()
-        });
-        $('#to-recover').on("click", function() {
-            $("#loginform").slideUp();
-            $("#recoverform").fadeIn();
-        });
+    botaoEntrar():void{
+        if(this.email != null && this.senha != null && this.email != '' && this.senha !=''){
+            this.fire.loginEmail(this.email,this.senha).then(x=> console.log(x));
+            
+        }else{
+            console.log('sem dados');
+        }
     }
+
+    sair(){
+        this.fire.logout();
+    }
+
+  
 
     onLoggedin() {
         localStorage.setItem('isLoggedin', 'true');

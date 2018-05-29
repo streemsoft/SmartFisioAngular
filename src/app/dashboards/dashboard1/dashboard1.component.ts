@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
-
+import { FirebaseService } from '../../firebase.service';
+import * as firebase from "firebase";
 
 @Component({
 	templateUrl: './dashboard1.component.html',
@@ -8,9 +9,16 @@ import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class Dashboard1Component implements AfterViewInit {
 	subtitle:string;	
-	constructor() {
-		this.subtitle = "This is some text within a card block."
-	}
+	constructor(private fire : FirebaseService) {
+        this.subtitle = "This is some text within a card block."
+        this.fire.validaAuth();
+    }
+    
+    ngOnInit() {
+      
+    }
+
+
     // This is for the dashboar line chart
     // lineChart
     public lineChartData: Array<any> = [
