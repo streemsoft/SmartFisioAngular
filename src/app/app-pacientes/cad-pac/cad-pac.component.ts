@@ -28,11 +28,17 @@ export class CadPacComponent implements OnInit {
     let d = this.dtnasc.split('-');
 
     this.seletor.dt_nasc = new Date(d[1]+'/'+d[2]+'/'+d[0]).getTime().toString();
+
     this.fire.cadastrarPac(this.seletor,this.cliente);
     this.seletor = new PacSeletor();
     this.cliente = new Paciente();
     this.dtnasc = null;
     this.toastr.success('You are awesome!', 'Success!');
+  }
+
+  limparPaciente(){
+    this.seletor = new PacSeletor();
+    this.cliente = new Paciente();
   }
 
 }

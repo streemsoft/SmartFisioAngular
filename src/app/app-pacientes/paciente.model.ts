@@ -10,8 +10,11 @@ export class Paciente{
     numero:string;
     cidade:string;
     cep:string;
+    estado:string;
+    complemento:string;
     //contato
     telefone:string;
+    celular:string;
     email:string;
     //medico
     medico:string;
@@ -31,6 +34,9 @@ export class Paciente{
         this.cidade = '';
         this.civil = '';
         this.email = '';
+        this.estado = '';
+        this.complemento = '';
+        this.celular = '';
      }
 
 }

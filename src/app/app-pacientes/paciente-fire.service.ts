@@ -29,17 +29,17 @@ export class PacienteFireService {
 
     firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/DADOS/' + newKey).set({
         key:newKey,
-        sexo:pac.sexo,
-        civil:pac.civil,
-        profissao:pac.profissao,
-        rua:pac.rua,
-        bairro:pac.bairro,
-        numero:pac.numero,
-        cidade:pac.cidade,
+        sexo:pac.sexo.toUpperCase(),
+        civil:pac.civil.toUpperCase(),
+        profissao:pac.profissao.toUpperCase(),
+        rua:pac.rua.toUpperCase(),
+        bairro:pac.bairro.toUpperCase(),
+        numero:pac.numero.toUpperCase(),
+        cidade:pac.cidade.toUpperCase(),
         cep:pac.cep,
-        telefone:pac.telefone,
-        email:pac.email,
-        medico:pac.medico,
+        telefone:pac.telefone.toUpperCase(),
+        email:pac.email.toUpperCase(),
+        medico:pac.medico.toUpperCase(),
         telmed:pac.telmed
     });
   }
