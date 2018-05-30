@@ -2,14 +2,55 @@
   <div class="col-12">
       <div class="card">
                 <div class="card card-body">
-                        <div class="form-group">
-                            <label>Paciente</label>
-                            <input type="text" [(ngModel)]="seletor.nome" placeholder="Nome completo" style="text-transform: uppercase" class="form-control">
+                        <div class="container">
+                            <div class="form-group">
+                                <label>Paciente</label>
+                                <input type="text" [(ngModel)]="seletor.nome" placeholder="Nome completo" style="text-transform: uppercase" class="form-control">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Data de nascimento</label>
-                            <input class="form-control" type="date" [(ngModel)]="dtnasc" >
-                        </div>
+                        <div class="container">
+                            <div class="row">
+                              <div class="col-sm">
+                                 <div class="form-group">
+                                     <label>Data de nascimento</label>
+                                     <input class="form-control" type="date" [(ngModel)]="dtnasc" >
+                                  </div>
+                              </div>
+                              <div class="col-sm">
+                                <div class="form-group">
+                                    <label>Gênero</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                          Masculino
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                          Feminino
+                                        </label>
+                                      </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container">
+                                <div class="row">
+                                  <div class="col-sm">
+                                     <div class="form-group">
+                                         <label>Data de nascimento</label>
+                                         <input class="form-control" type="date" [(ngModel)]="dtnasc" >
+                                      </div>
+                                  </div>
+                                  <div class="col-sm">
+                                        <div class="form-group">
+                                            <label>Paciente</label>
+                                            <input type="text"  placeholder="Nome completo" style="text-transform: uppercase" class="form-control">
+                                        </div>
+                                  </div>
+                                </div>
+                            </div>
                         
                         <div class="offset-sm-3 col-sm-9">
                             <button (click)="cadastrarPaciente()" class="btn btn-info waves-effect waves-light m-t-10">Salvar</button>
