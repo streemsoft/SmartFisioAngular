@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { CadPacComponent } from './cad-pac/cad-pac.component';
 import { ManuPacComponent } from './manu-pac/manu-pac.component';
 import { SelectPacComponent } from './select-pac/select-pac.component';
-
+import { AuthguardGuard } from './../authguard.guard';
 
 
 export const AppPacientesRoutes: Routes = [
@@ -16,7 +16,8 @@ export const AppPacientesRoutes: Routes = [
       data: {
         title: 'Cadastro de Paciente',
         urls: [{title: 'Paciente',url: '/cadastro'},{title: 'Cadastro'}]
-      }
+      },
+      canActivate: [AuthguardGuard]
     },
     {
         path: 'manutencao',
@@ -24,7 +25,8 @@ export const AppPacientesRoutes: Routes = [
         data: {
           title: 'Manutenção de Cadastro',
           urls: [{title: 'Paciente',url: '/manutencao'},{title: 'Manutenção'}]
-        }
+        },
+        canActivate: [AuthguardGuard]
       },
       {
         path: 'selectpac',
@@ -32,7 +34,8 @@ export const AppPacientesRoutes: Routes = [
         data: {
           title: 'Buscar Paciente',
           urls: [{title: 'Paciente',url: '/selectpac'},{title: 'Busca'}]
-        }
+        },
+        canActivate: [AuthguardGuard]
       }
     ]
   }

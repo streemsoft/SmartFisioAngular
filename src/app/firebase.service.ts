@@ -32,7 +32,6 @@ export class FirebaseService {
       this.firebaseKey = user.uid;
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_true');
       localStorage.setItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg', user.uid+'');
-      console.log(user.uid);
     } else {
       localStorage.setItem('AI65z454aSy5454AQ54Go1aa4HER36','_false');
       localStorage.removeItem('YusgfdloS8TKvhghg1-96sdgsdf_Sa_Rg');

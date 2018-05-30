@@ -9,15 +9,18 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ManuPacComponent } from './manu-pac/manu-pac.component';
 import { SelectPacComponent } from './select-pac/select-pac.component';
-
+import { PacienteFireService } from './paciente-fire.service';
+import { ToastModule } from 'ng2-toastr';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
+    FormsModule,
     RouterModule.forChild(AppPacientesRoutes),
-    FormsModule
+    ToastModule.forRoot()
   ],
-  declarations: [CadPacComponent, ManuPacComponent, SelectPacComponent]
+  declarations: [CadPacComponent, ManuPacComponent, SelectPacComponent],
+  providers:[PacienteFireService]
 })
 export class AppPacientesModule { }

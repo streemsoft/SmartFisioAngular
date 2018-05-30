@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { PacienteFireService } from './../paciente-fire.service';
+import { PacSeletor } from './../pacseletor.model';
+import { Paciente } from './../paciente.model';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-cad-pac',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadPacComponent implements OnInit {
 
-  constructor() { }
+  seletor:PacSeletor;
+  cliente:Paciente;
+  dtnasc:any;
+
+  constructor( private fire:PacienteFireService, public toastr: ToastsManager, vcr: ViewContainerRef ) { 
+      this.seletor = new PacSeletor();
+      this.cliente = new Paciente();
+      this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
+  }
+
+  cadastrarPaciente():void{
+    let d = this.dtnasc.split('-');
+
+    this.seletor.dt_nasc = new Date(d[1]+'/'+d[2]+'/'+d[0]).getTime().toString();
+    this.fire.cadastrarPac(this.seletor,this.cliente);
+    this.seletor = new PacSeletor();
+    this.cliente = new Paciente();
+    this.dtnasc = null;
+    this.toastr.success('You are awesome!', 'Success!');
   }
 
 }

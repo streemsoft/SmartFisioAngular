@@ -16,10 +16,8 @@ export class AuthguardGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
 
       if('_true'==this.fire.firebaseui){
-            console.log('autorizou a rota');
             return true;
         }else{
-          console.log('nao autorizou a rota');
           this.router.navigate(['/authentication/login'])
           return false;
         }
