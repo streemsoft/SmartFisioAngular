@@ -6,30 +6,30 @@
                 <div class="form-group">            
                     <div class="input-group">            
                         <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>            
-                        <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">            
-                    </div>            
+                        <input type="text"  class="form-control" name="searchString" placeholder="Encontre seu paciente..." [(ngModel)]="searchString">                            
+                    </div>    
+                    <button (click)="buscarPaciente()" class="btn btn-info waves-effect waves-light m-t-10">Buscar</button>         
                 </div>        
             </form>
-          <h4 class="card-title">Basic Table</h4>
-          <h6 class="card-subtitle">Add class <code>.table</code></h6>
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>Name</th>
-                          <th>Data Nasc.</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let pac of pacientes; let i = index">
-                          <td>{{i+1}}</td>
-                          <td>{{pac.nome}}</td>
-                          <td>{{pac.dt_nasc}}</td>
-                      </tr>                    
-                  </tbody>
-              </table>
-          </div>
+            <div [hidden]="!controle">
+                <h6 class="card-subtitle">Pacientes</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Data Nasc.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pac of listaPac; let i = index">                          
+                                <td>{{pac.nome}}</td>
+                                <td>{{pac.dt_nasc}}</td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+        </div>
       </div>
             
       </div>
