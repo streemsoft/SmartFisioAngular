@@ -7,7 +7,7 @@ import * as firebase from "firebase";
 @Injectable()
 export class PacienteFireService {
 
-  constructor(private fire : FirebaseService) { }
+  constructor(public fire : FirebaseService) { }
 
   cadastrarPac(pacSel:PacSeletor,pac:Paciente):void{
     var newKey = firebase.database().ref().child('CLIENTE/GERAL').push().key;
@@ -29,7 +29,7 @@ export class PacienteFireService {
 
     firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/DADOS/' + newKey).set({
         key:newKey,
-        sexo:pac.sexo.toUpperCase(),
+        sexo:pac.sexo,
         civil:pac.civil.toUpperCase(),
         profissao:pac.profissao.toUpperCase(),
         rua:pac.rua.toUpperCase(),
@@ -38,10 +38,40 @@ export class PacienteFireService {
         cidade:pac.cidade.toUpperCase(),
         cep:pac.cep,
         telefone:pac.telefone.toUpperCase(),
-        email:pac.email.toUpperCase(),
+        email:pac.email,
         medico:pac.medico.toUpperCase(),
-        telmed:pac.telmed
+        telmed:pac.telmed,
+        celular:pac.celular,
+        estado:pac.estado.toUpperCase(),
+        complemento:pac.complemento.toUpperCase()
     });
+  }
+
+  alterarPac(pacSel:PacSeletor,pac:Paciente):void{
+    var updates = {};
+    updates[ this.fire.firebaseKey+'/CLIENTES/GERAL/' + pacSel.key ] = pacSel;
+    updates[this.fire.firebaseKey+'/CLIENTES/DADOS/' + pacSel.key] = pac;
+  
+    firebase.database().ref().update(updates);
+  
+  }
+
+  excluirPac(pacSel:PacSeletor){
+    firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/GERAL/' + pacSel.key).remove();
+    firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/DADOS/' + pacSel.key).remove();
+    firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/REGISTRO/' + pacSel.key).remove();
+  }
+
+  selectPacSeletor(key:string){
+    var seletor = firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/GERAL/' + key).once('value').then(x => {return x.val()});
+    
+    return seletor;
+  }
+
+  selectPacCliente(key:string){
+    var seletor = firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/DADOS/' + key).once('value').then(x => {return x.val()});
+    
+    return seletor;
   }
 
 }

@@ -9,6 +9,8 @@ export class FirebaseService {
 
   firebaseui:string;
   firebaseKey:string;
+
+  clienteKey:string = '-LDo0qBbNLTKhVFP2J0k';
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",
