@@ -10,7 +10,8 @@ export class FirebaseService {
   firebaseui:string;
   firebaseKey:string;
 
-  clienteKey:string = '-LDo0qBbNLTKhVFP2J0k';
+  clienteKey:string;
+  rotaDestino:string = '1';
   
   config:any = {
     apiKey: "AIzaSyAQGo1aa4HER36_YuloS8TKv1-96_Sa_Rg",

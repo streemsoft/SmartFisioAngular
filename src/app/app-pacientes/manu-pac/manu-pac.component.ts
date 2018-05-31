@@ -33,6 +33,17 @@ export class ManuPacComponent implements OnInit {
     }else{
         let d = this.dtnasc.split('-');
         this.seletor.dt_nasc = new Date(d[1]+'/'+d[2]+'/'+d[0]).getTime().toString();
+        //upercase
+        this.cliente.civil= this.cliente.civil.toUpperCase();
+        this.cliente.profissao =this.cliente.profissao.toUpperCase();
+        this.cliente.rua=this.cliente.rua.toUpperCase();
+        this.cliente.bairro=this.cliente.bairro.toUpperCase();
+        this.cliente.cidade=this.cliente.cidade.toUpperCase();
+        this.cliente.medico=this.cliente.medico.toUpperCase();
+        this.cliente.estado=this.cliente.estado.toUpperCase();
+        this.cliente.complemento=this.cliente.complemento.toUpperCase();
+        this.seletor.nome = this.seletor.nome.toUpperCase();
+
         this.fire.alterarPac(this.seletor,this.cliente);
         this.toastr.success('Salvo com sucesso!', 'Atenção!');
         this.alerta = '';

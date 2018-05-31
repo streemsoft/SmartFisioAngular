@@ -75,7 +75,8 @@ export class PacienteFireService {
   }
 
   buscarPorNome(nome:string){
-       var lista = firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/GERAL/').orderByChild('nome').startAt(nome).once('value').then(x => {return x});
+       var lista = firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/GERAL/')
+                        .orderByChild('nome').startAt(nome).endAt('\uf8ff').once('value').then(x => {return x});
        
        return lista;   
   }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PacSeletor } from './../pacseletor.model';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { PacienteFireService } from '../paciente-fire.service';
@@ -19,7 +20,7 @@ export class SelectPacComponent implements OnInit {
 
   pacientes:any[] = [{nome: 'josue',dt_nasc:'10/10/2010'}];
 
-  constructor(private fire : PacienteFireService, public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(private fire : PacienteFireService, public toastr: ToastsManager, vcr: ViewContainerRef, private router : Router) {
        this.toastr.setRootViewContainerRef(vcr);
    }
 
@@ -27,9 +28,10 @@ export class SelectPacComponent implements OnInit {
   }
 
   buscarPaciente(){
+    this.controle = false;
      if(this.searchString != null && this.searchString != '' && this.searchString != ' '){
-        this.listaPac = [];
-        this.fire.buscarPorNome(this.searchString).then(x=> {
+        this.listaPac= [];
+        this.fire.buscarPorNome(this.searchString.toUpperCase()).then(x=> {
           var username = x.val();
           var json = JSON.stringify(username);
           var obj = JSON.parse(json);
@@ -57,21 +59,17 @@ export class SelectPacComponent implements OnInit {
 
   }
 
-  convertArray(x:any){
-    var listap:PacSeletor[];
-    
-    x.forEach(child => listap.push( this.cc(child)));
-    return listap;
+  setPacKey(key:string){
+      this.fire.fire.clienteKey = key;
+
+      switch(this.fire.fire.rotaDestino){
+        case('1'):
+            this.router.navigate(['/pacientes/manutencao']);
+      }
+
+
   }
 
-  cc(x:any){
-    var childData = x.val();
-      
-    var temp:PacSeletor = new PacSeletor();
-    temp.key = childData.key;
-    temp.nome = childData.nome;
-    temp.dt_nasc = new Date(Number(childData.dt_nasc)).toLocaleDateString();
-    return temp;
-  }
+
 
 }
