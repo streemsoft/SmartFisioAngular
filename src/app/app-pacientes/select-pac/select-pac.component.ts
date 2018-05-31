@@ -1,3 +1,4 @@
+import { PacSeletor } from './../pacseletor.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-pac.component.css']
 })
 export class SelectPacComponent implements OnInit {
+
+  public foodItem: PacSeletor;
+
+  public searchString: string;
+
+  pacientes:any[] = [{nome: 'josue',dt_nasc:'10/10/2010'}];
 
   constructor() { }
 

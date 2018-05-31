@@ -1,3 +1,4 @@
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,6 +12,7 @@ import { ManuPacComponent } from './manu-pac/manu-pac.component';
 import { SelectPacComponent } from './select-pac/select-pac.component';
 import { PacienteFireService } from './paciente-fire.service';
 import { ToastModule } from 'ng2-toastr';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { ToastModule } from 'ng2-toastr';
     NgbModule,
     FormsModule,
     RouterModule.forChild(AppPacientesRoutes),
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    NgxDatatableModule,
+    Ng2SmartTableModule
   ],
   declarations: [CadPacComponent, ManuPacComponent, SelectPacComponent],
   providers:[PacienteFireService]
