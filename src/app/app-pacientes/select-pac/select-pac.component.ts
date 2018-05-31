@@ -10,9 +10,6 @@ import { ToastsManager } from 'ng2-toastr';
   styleUrls: ['./select-pac.component.css']
 })
 export class SelectPacComponent implements OnInit {
-
-  public foodItem: PacSeletor;
-
   public searchString: string;
 
   listaPac:any[] = [];

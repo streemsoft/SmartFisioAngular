@@ -23,7 +23,8 @@ export const routes: Routes = [
         { path: 'apps', loadChildren: './apps/apps.module#AppsModule' },
         { path: 'sample-pages', loadChildren: './sample-pages/sample-pages.module#SamplePagesModule' },
         { path: 'pacientes', loadChildren: './app-pacientes/app-pacientes.module#AppPacientesModule' },
-        { path: 'auth', loadChildren: './app-login/app-login.module#AppLoginModule' }
+        { path: 'auth', loadChildren: './app-login/app-login.module#AppLoginModule' },
+        { path: 'agendamento', loadChildren: './app-agendamento/app-agendamento.module#AppAgendamentoModule' }
     ]
 },
 {
