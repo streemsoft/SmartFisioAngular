@@ -10,7 +10,7 @@ export class PacienteFireService {
   constructor(public fire : FirebaseService) { }
 
   cadastrarPac(pacSel:PacSeletor,pac:Paciente):void{
-    var newKey = firebase.database().ref().child('CLIENTE/GERAL').push().key;
+    var newKey = firebase.database().ref().child(this.fire.firebaseKey+'CLIENTE/GERAL').push().key;
     
     firebase.database().ref(this.fire.firebaseKey+'/CLIENTES/GERAL/' + newKey).set({
         key: newKey,

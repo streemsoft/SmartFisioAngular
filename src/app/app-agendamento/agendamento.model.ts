@@ -4,6 +4,7 @@ export class Agendamento{
     key:string;
     datae:string;
     cliente:string;
+    keycliente:string;
     hora:string;
     status:string;
     tempo:string;
@@ -14,7 +15,8 @@ export class Agendamento{
         this.cliente = '';
         this.hora = '';
         this.status = ''; 
-        this.tempo = ''       ;
+        this.tempo = '' ;
+        this.keycliente = '';
     }
     
 }

@@ -35,11 +35,13 @@ export class SelectPacComponent implements OnInit {
 
           for(let i in obj){
             var item = obj[i];
-            var temp:PacSeletor = new PacSeletor();
-            temp.key = item.key;
-            temp.nome = item.nome;
-            temp.dt_nasc = new Date(Number(item.dt_nasc)).toLocaleDateString();
-            this.listaPac.push(temp);
+            if(item.nome.indexOf(this.searchString.toUpperCase()) == 0){
+              var temp:PacSeletor = new PacSeletor();
+              temp.key = item.key;
+              temp.nome = item.nome;
+              temp.dt_nasc = new Date(Number(item.dt_nasc)).toLocaleDateString();
+              this.listaPac.push(temp);
+            }
           }
           if(this.listaPac.length > 0){
             this.controle = true;
